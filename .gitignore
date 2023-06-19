@@ -54,3 +54,5 @@
 .env
 
 db-app/
+
+.idea/
