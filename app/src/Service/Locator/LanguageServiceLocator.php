@@ -3,18 +3,15 @@
 namespace App\Service\Locator;
 
 use App\Exceptions\LanguageException;
-use App\Interface\Locator\LanguageInterface;
-use App\Service\LanguageService\English;
-use App\Service\LanguageService\French;
 use Psr\Container\ContainerInterface;
-use Symfony\Config\TwigExtra\StringConfig;
-use Symfony\Contracts\Service\ServiceSubscriberInterface;
+use Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
 
-class LanguageServiceLocator implements ServiceSubscriberInterface
+class LanguageServiceLocator
 {
-    public function __construct(ContainerInterface $locator)
-    {
-        $this->locator = $locator;
+    public function __construct(
+        #[TaggedLocator('app.language_service', indexAttribute: 'key')]
+        private ContainerInterface $locator
+    ){
     }
 
     public function determineLanguageToUse(string $language): String
@@ -26,13 +23,5 @@ class LanguageServiceLocator implements ServiceSubscriberInterface
         }
 
         throw new LanguageException();
-    }
-
-    public static function getSubscribedServices(): array
-    {
-        return [
-            'fr' => French::class,
-            'en' => English::class,
-        ];
     }
 }

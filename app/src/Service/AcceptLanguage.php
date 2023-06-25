@@ -9,6 +9,10 @@ class AcceptLanguage
         foreach ($acceptLanguages as $acceptLanguage) {
             $locale = explode(';', $acceptLanguage)[0];
 
+            if (preg_match('#^[a-z]{2}_[A-Z]{2}$#', $locale)) {
+                $locale = substr($locale, 0, 2);
+            }
+
             if (in_array($locale, $this->getAcceptedLanguages())) {
                 return $locale;
             }

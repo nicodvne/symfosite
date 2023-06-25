@@ -20,5 +20,12 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Service\LanguageService\English:
+        tags:
+            - { name: 'app.language_service', key: 'en' }
+
+    App\Service\LanguageService\French:
+        tags:
+            - { name: 'app.language_service', key: 'fr' }
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
