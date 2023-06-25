@@ -12,13 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/language', name: 'language_controller')]
 class LanguageController extends AbstractController
 {
-
-
     public function __construct(
         private LanguageServiceLocator $languageServiceLocator,
         private AcceptLanguage $acceptLanguage,
-    )
-    {
+    ) {
     }
 
     #[Route('/', name: 'app_service_locator_discover')]

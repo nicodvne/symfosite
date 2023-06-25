@@ -14,3 +14,6 @@ connect:
 
 create-controller:
 	$(DOCKER-EXEC) -ti $(PHP-FPM-CONTAINER) bin/console make:controller
+
+cs-fixer:
+	$(DOCKER-EXEC) -ti $(PHP-FPM-CONTAINER) tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src

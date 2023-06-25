@@ -4,8 +4,8 @@ namespace App\Service;
 
 class AcceptLanguage
 {
-   public function getMainLanguage(array $acceptLanguages): string
-   {
+    public function getMainLanguage(array $acceptLanguages): string
+    {
         foreach ($acceptLanguages as $acceptLanguage) {
             $locale = explode(';', $acceptLanguage)[0];
 
@@ -15,15 +15,15 @@ class AcceptLanguage
         }
 
         return $this->getDefaultLanguage();
-   }
+    }
 
-   private function getAcceptedLanguages(): array
-   {
-       return ['fr', 'en'];
-   }
+    private function getAcceptedLanguages(): array
+    {
+        return ['fr', 'en'];
+    }
 
-   private function getDefaultLanguage(): string
-   {
-       return 'fr';
-   }
+    private function getDefaultLanguage(): string
+    {
+        return 'fr';
+    }
 }
